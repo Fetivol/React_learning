@@ -28,7 +28,7 @@ export const Section = styled.section`
 `;
 
 export const ListElement = styled.li`
-  background-color: ${props => props.bgColor || '#ccc'};
+  background-color: ${props => props.bgcolor || '#ccc'};
   display: flex;
   flex-direction: column;
   align-items: center;

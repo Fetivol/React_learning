@@ -17,7 +17,7 @@ function Statistics({ data }) {
 
       <ul>
         {data.map(el => (
-          <ListElement key={el.id} bgColor={getRandomColor()}>
+          <ListElement key={el.id} bgcolor={getRandomColor()}>
             <span>{el.label}</span>
             <span>{el.percentage}%</span>
           </ListElement>
