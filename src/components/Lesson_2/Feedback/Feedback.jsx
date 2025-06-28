@@ -31,7 +31,7 @@ function Feedback() {
 
   return (
     <Wrapper>
-      <h2>Feedback</h2>
+      <h3>Feedback</h3>
       <List>
         {Object.keys(state).map(key => (
           <ListItem key={key}>
