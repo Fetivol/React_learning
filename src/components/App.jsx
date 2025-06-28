@@ -1,19 +1,24 @@
 import { GlobalStyle } from './GlobalStyle';
 import Layout from './Layout';
-import Profile from './Profile';
+import LessonWrapper from './LessonWrapper';
 import { user, friends, transactions, data } from 'data';
-import Statistics from './Statistics';
-import FriendList from './FriendList';
-import Transactions from './Transactions';
+import { Profile, Statistics, FriendList, Transactions } from './Lesson_1';
+import { Feedback } from './Lesson_2';
 
 export const App = () => {
   return (
     <Layout>
-      <Profile user={user} />
-      <Statistics data={data} />
-      <FriendList friends={friends} />
-      <Transactions transactions={transactions} />
-      React homework template
+      <LessonWrapper title="Adding interactivity">
+        <Feedback />
+      </LessonWrapper>
+
+      <LessonWrapper title="Components and props">
+        <Profile user={user} />
+        <Statistics data={data} />
+        <FriendList friends={friends} />
+        <Transactions transactions={transactions} />
+      </LessonWrapper>
+
       <GlobalStyle />
     </Layout>
   );
