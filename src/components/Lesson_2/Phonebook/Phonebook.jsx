@@ -44,7 +44,10 @@ function Phonebook() {
 
     if (
       state.contacts.some(contact => {
-        return contact.name === state.name || contact.number === state.number;
+        return (
+          contact.name.toLowerCase() === state.name.trim() ||
+          contact.number === state.number.trim()
+        );
       })
     ) {
       setExisting(true);
@@ -53,13 +56,13 @@ function Phonebook() {
     setExisting(false);
 
     setState(prev => ({
-      ...prev,
       contacts: [
         ...prev.contacts,
         { name: prev.name.trim(), number: prev.number.trim(), id: nanoid() },
       ],
       name: '',
       number: '',
+      filter: '',
     }));
   }
 
@@ -121,7 +124,6 @@ function Phonebook() {
           value={state.filter}
           autoComplete="off"
           onChange={e => {
-            console.log(e.target.value);
             setState(prev => ({ ...prev, filter: e.target.value }));
           }}
         />
