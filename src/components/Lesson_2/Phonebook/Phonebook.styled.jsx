@@ -38,6 +38,29 @@ export const Button = styled.button`
   background-color: #ecd9d9;
   border: solid 1px #01060c;
   border-radius: 4px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  &:hover {
+    background-color: #d9c0c0;
+    color: #000;
+  }
   cursor: pointer;
+`;
+
+export const List = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 350px;
+`;
+
+export const ListItem = styled.li`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  background-color: #fff;
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
 `;

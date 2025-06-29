@@ -35,7 +35,8 @@ export const Button = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: #aaaaaa;
+    background-color: #d9c0c0;
+    color: #000;
   }
 `;
 export const StatsList = styled.ul`

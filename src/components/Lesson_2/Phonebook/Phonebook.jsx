@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { Button, Form, Title, Wrapper } from './Phonebook.styled';
+import {
+  Button,
+  Form,
+  List,
+  ListItem,
+  Title,
+  Wrapper,
+} from './Phonebook.styled';
 import { nanoid } from 'nanoid';
 
 const listOfContacts = [
@@ -61,6 +68,13 @@ function Phonebook() {
     setState(prev => ({ ...prev, [name]: value }));
   }
 
+  function handleDelete(id) {
+    setState(prev => ({
+      ...prev,
+      contacts: prev.contacts.filter(contact => contact.id !== id),
+    }));
+  }
+
   return (
     <Wrapper>
       <Title>Phonebook</Title>
@@ -112,15 +126,26 @@ function Phonebook() {
           }}
         />
       </Form>
-      <ul>
-        {visibleItems.length > 0 ? (
-          visibleItems.map(el => (
-            <li key={el.id}>{`${el.name}: ${el.number}`}</li>
-          ))
-        ) : (
-          <p>We didn't find this person</p>
-        )}
-      </ul>
+
+      {visibleItems.length > 0 ? (
+        <List>
+          {visibleItems.map(el => (
+            <ListItem key={el.id}>
+              {`${el.name}: ${el.number}`}
+              <Button
+                type="button"
+                onClick={() => {
+                  handleDelete(el.id);
+                }}
+              >
+                Delete
+              </Button>
+            </ListItem>
+          ))}
+        </List>
+      ) : (
+        <p>We didn't find any persons</p>
+      )}
     </Wrapper>
   );
 }
