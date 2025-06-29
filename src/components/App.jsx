@@ -3,13 +3,14 @@ import Layout from './Layout';
 import LessonWrapper from './LessonWrapper';
 import { user, friends, transactions, data } from 'data';
 import { Profile, Statistics, FriendList, Transactions } from './Lesson_1';
-import { Feedback } from './Lesson_2';
+import { Feedback, Phonebook } from './Lesson_2';
 
 export const App = () => {
   return (
     <Layout>
       <LessonWrapper title="Adding interactivity">
         <Feedback />
+        <Phonebook />
       </LessonWrapper>
 
       <LessonWrapper title="Components and props">
