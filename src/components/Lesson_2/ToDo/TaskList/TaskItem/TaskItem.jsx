@@ -1,7 +1,11 @@
 import React from 'react';
 
-function TaskItem() {
-  return <li>task1</li>;
+function TaskItem({ task }) {
+  return (
+    <li>
+      {task.task}---{task.desc}---{task.tags}
+    </li>
+  );
 }
 
 export default TaskItem;
