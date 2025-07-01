@@ -39,7 +39,6 @@ function AddTask({ setTasks, tasks }) {
       tags: '',
       completed: false,
     });
-    console.log(tasks);
   }
 
   return (

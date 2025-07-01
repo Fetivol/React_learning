@@ -7,6 +7,13 @@ export const Form = styled.form`
   align-items: center;
   gap: 10px;
   width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  max-width: 400px;
+  margin: 0 auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 export const Label = styled.label`
   font-size: 16px;
