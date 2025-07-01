@@ -1,23 +1,38 @@
-import React from 'react';
-import { ListItem } from './TaskItem.styled';
+import React, { useState } from 'react';
+import { ListItem, TagsList, TaskName } from './TaskItem.styled';
 
-function TaskItem({ task: { id, task, desc, tags, completed } }) {
+function TaskItem({ setTasks, task: { id, task, desc, tags, completed } }) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  function handleChange() {
+    setTasks(prev =>
+      prev.map(task =>
+        task.id === id ? { ...task, completed: !completed } : task
+      )
+    );
+  }
+
   return (
-    <ListItem>
-      <div>
-        <h4>{task}</h4>
-        <label>
-          <input type="checkbox" value={completed}></input>
-          Done
-        </label>
-        <ul>
-          {tags.map(tag => (
-            <li key={tag}>{tag}</li>
-          ))}
-        </ul>
-        <div>
-          <p>{desc}</p>
-        </div>
+    <ListItem key={id}>
+      <TaskName>
+        <input type="checkbox" checked={completed} onChange={handleChange} />
+        <h4 className={completed ? 'completed' : ''}>{task}</h4>
+      </TaskName>
+
+      <TagsList>
+        {tags.map(tag => (
+          <li key={tag}>{tag}</li>
+        ))}
+      </TagsList>
+      <div
+        onMouseEnter={() => {
+          setIsHovered(true);
+        }}
+        onMouseLeave={() => {
+          setIsHovered(false);
+        }}
+      >
+        <p>{desc}</p>
       </div>
     </ListItem>
   );

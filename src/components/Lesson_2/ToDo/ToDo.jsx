@@ -41,7 +41,7 @@ function ToDo() {
       <Title>ToDo List</Title>
       <AddTask setTasks={setTasks} tasks={tasks} />
       <Filters />
-      <TaskList tasks={tasks} />
+      <TaskList setTasks={setTasks} tasks={tasks} />
     </Wrapper>
   );
 }

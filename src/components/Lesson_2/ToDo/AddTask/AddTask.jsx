@@ -31,6 +31,7 @@ function AddTask({ setTasks, tasks }) {
         ...form,
         tags: tagsArray,
         id: crypto.randomUUID(),
+        completed: false,
       },
     ]);
     setForm({
