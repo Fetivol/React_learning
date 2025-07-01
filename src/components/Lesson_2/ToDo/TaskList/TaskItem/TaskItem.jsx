@@ -4,6 +4,12 @@ import { ListItem, TagsList, TaskName } from './TaskItem.styled';
 function TaskItem({ setTasks, task: { id, task, desc, tags, completed } }) {
   const [isHovered, setIsHovered] = useState(false);
 
+  function truncateText(text, maxLength = 25) {
+    return text.length > maxLength
+      ? text.substring(0, maxLength) + '...'
+      : text;
+  }
+
   function handleChange() {
     setTasks(prev =>
       prev.map(task =>
@@ -13,7 +19,15 @@ function TaskItem({ setTasks, task: { id, task, desc, tags, completed } }) {
   }
 
   return (
-    <ListItem key={id}>
+    <ListItem
+      key={id}
+      onMouseEnter={() => {
+        setIsHovered(true);
+      }}
+      onMouseLeave={() => {
+        setIsHovered(false);
+      }}
+    >
       <TaskName>
         <input type="checkbox" checked={completed} onChange={handleChange} />
         <h4 className={completed ? 'completed' : ''}>{task}</h4>
@@ -24,16 +38,8 @@ function TaskItem({ setTasks, task: { id, task, desc, tags, completed } }) {
           <li key={tag}>{tag}</li>
         ))}
       </TagsList>
-      <div
-        onMouseEnter={() => {
-          setIsHovered(true);
-        }}
-        onMouseLeave={() => {
-          setIsHovered(false);
-        }}
-      >
-        <p>{desc}</p>
-      </div>
+
+      <p>{isHovered ? desc : truncateText(desc)}</p>
     </ListItem>
   );
 }

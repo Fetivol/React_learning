@@ -35,13 +35,18 @@ function ToDo() {
       completed: false,
     },
   ]);
+  const [filter, setFilter] = useState('');
+
+  const filteredTasks = tasks.filter(task =>
+    task.task.toLowerCase().includes(filter.toLowerCase())
+  );
 
   return (
     <Wrapper>
       <Title>ToDo List</Title>
       <AddTask setTasks={setTasks} tasks={tasks} />
-      <Filters />
-      <TaskList setTasks={setTasks} tasks={tasks} />
+      <Filters filter={filter} setFilter={setFilter} />
+      <TaskList setTasks={setTasks} tasks={filteredTasks} />
     </Wrapper>
   );
 }
