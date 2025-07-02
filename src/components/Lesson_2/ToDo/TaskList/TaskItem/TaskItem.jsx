@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { ListItem, TagsList, TaskName } from './TaskItem.styled';
 
-function TaskItem({ setTasks, task: { id, task, desc, tags, completed } }) {
+function TaskItem({
+  setTasks,
+  task: { id, task, desc, tags, completed },
+  setFilter,
+}) {
   const [isHovered, setIsHovered] = useState(false);
 
   function truncateText(text, maxLength = 25) {
@@ -16,6 +20,13 @@ function TaskItem({ setTasks, task: { id, task, desc, tags, completed } }) {
         task.id === id ? { ...task, completed: !completed } : task
       )
     );
+  }
+
+  function handleTagClick(tagName) {
+    setFilter(prev => ({
+      ...prev,
+      tag: tagName,
+    }));
   }
 
   return (
@@ -35,7 +46,14 @@ function TaskItem({ setTasks, task: { id, task, desc, tags, completed } }) {
 
       <TagsList>
         {tags.map(tag => (
-          <li key={tag}>{tag}</li>
+          <li
+            key={tag}
+            onClick={() => {
+              handleTagClick(tag);
+            }}
+          >
+            {tag}
+          </li>
         ))}
       </TagsList>
 

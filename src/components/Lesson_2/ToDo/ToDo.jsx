@@ -24,7 +24,7 @@ function ToDo() {
       id: '3',
       task: 'Подзвонити мамі',
       desc: 'Обговорити плани на вихідні',
-      tags: ["сім'я"],
+      tags: ["сім'я", 'продукти'],
       completed: true,
     },
     {
@@ -35,18 +35,41 @@ function ToDo() {
       completed: false,
     },
   ]);
-  const [filter, setFilter] = useState('');
+  const [filter, setFilter] = useState({
+    textFilter: '',
+    completed: '',
+    tag: '',
+  });
 
-  const filteredTasks = tasks.filter(task =>
-    task.task.toLowerCase().includes(filter.toLowerCase())
-  );
+  const filteredTasks = tasks.filter(task => {
+    const matchesText =
+      filter.textFilter === '' ||
+      task.task.toLowerCase().includes(filter.textFilter.toLowerCase());
+
+    const matchesCompleted =
+      filter.completed === '' || String(task.completed) === filter.completed;
+
+    const matchesTag = filter.tag === '' || task.tags.includes(filter.tag);
+
+    return matchesText && matchesCompleted && matchesTag;
+  });
+
+  const tagsArr = tasks
+    .map(task => task.tags)
+    .flat()
+    .filter((tag, index, array) => array.indexOf(tag) === index)
+    .sort();
 
   return (
     <Wrapper>
       <Title>ToDo List</Title>
       <AddTask setTasks={setTasks} tasks={tasks} />
-      <Filters filter={filter} setFilter={setFilter} />
-      <TaskList setTasks={setTasks} tasks={filteredTasks} />
+      <Filters tags={tagsArr} filter={filter} setFilter={setFilter} />
+      <TaskList
+        setTasks={setTasks}
+        tasks={filteredTasks}
+        setFilter={setFilter}
+      />
     </Wrapper>
   );
 }

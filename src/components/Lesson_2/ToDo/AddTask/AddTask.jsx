@@ -15,7 +15,6 @@ function AddTask({ setTasks, tasks }) {
       ...prev,
       [name]: value,
     }));
-    console.log(form);
   }
 
   function handleSubmit(e) {

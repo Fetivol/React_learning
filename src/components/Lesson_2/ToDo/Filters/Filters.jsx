@@ -1,36 +1,52 @@
 import React from 'react';
+import { Form, Input, Label, Select } from './Filters.styled';
 
-function Filters({ filter, setFilter }) {
+function Filters({ tags, filter, setFilter }) {
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setFilter(prev => ({
+      ...prev,
+      [name]: value,
+    }));
+  }
+
   return (
-    <form
+    <Form
       onSubmit={e => {
         e.preventDefault();
       }}
     >
-      <label htmlFor="nameFilter">Filter tasks</label>
-      <input
-        type="text"
-        id="nameFilter"
-        name="textFilter"
-        value={filter}
-        onChange={e => {
-          setFilter(e.target.value);
-          console.log(filter);
-        }}
-      />
+      <Label htmlFor="nameFilter">
+        Filter tasks
+        <Input
+          type="text"
+          id="nameFilter"
+          name="textFilter"
+          value={filter.textFilter}
+          onChange={handleChange}
+        />
+      </Label>
 
-      <label htmlFor="completed">Sort tasks</label>
-      <select name="completed" id="completed">
-        <option value="asc">Ascending</option>
-        <option value="desc">Descending</option>
-      </select>
+      <Select
+        name="completed"
+        id="completed"
+        value={filter.completed}
+        onChange={handleChange}
+      >
+        <option value="">Select status</option>
+        <option value="true">Completed</option>
+        <option value="false">Pending</option>
+      </Select>
 
-      <label htmlFor="">Select task</label>
-      <select>
-        <option value="task1">Task 1</option>
-        <option value="task2">Task 2</option>
-      </select>
-    </form>
+      <Select name="tag" id="tags" value={filter.tag} onChange={handleChange}>
+        <option value="">Select tag</option>
+        {tags.map(tag => (
+          <option value={tag} key={tag}>
+            {tag}
+          </option>
+        ))}
+      </Select>
+    </Form>
   );
 }
 
