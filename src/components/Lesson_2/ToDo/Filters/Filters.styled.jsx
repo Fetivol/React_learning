@@ -45,3 +45,24 @@ export const Label = styled.label`
   color: #333;
   margin-right: 10px;
 `;
+
+export const ResetButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 5px;
+  background-color: transparent;
+  border: solid 1px #01060c;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #000;
+  font-size: 20px;
+  &:hover {
+    color: #d1868680;
+  }
+  transition: color 0.3s ease;
+  &:focus,
+  &:active {
+    color: #d1868680;
+  }
+`;

@@ -54,7 +54,7 @@ function ToDo() {
     return matchesText && matchesCompleted && matchesTag;
   });
 
-  const tagsArr = tasks
+  const tagsArr = filteredTasks
     .map(task => task.tags)
     .flat()
     .filter((tag, index, array) => array.indexOf(tag) === index)
@@ -63,10 +63,11 @@ function ToDo() {
   return (
     <Wrapper>
       <Title>ToDo List</Title>
-      <AddTask setTasks={setTasks} tasks={tasks} />
+      <AddTask setTasks={setTasks} />
       <Filters tags={tagsArr} filter={filter} setFilter={setFilter} />
       <TaskList
         setTasks={setTasks}
+        allTasks={tasks}
         tasks={filteredTasks}
         setFilter={setFilter}
       />

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Form, Input, Label, Textarea, Button } from './AddTask.styled';
+// import { MdOutlineBookmarkAdd } from 'react-icons/md';
 
-function AddTask({ setTasks, tasks }) {
+function AddTask({ setTasks }) {
   const [form, setForm] = useState({
     task: '',
     desc: '',

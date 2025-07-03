@@ -4,7 +4,8 @@ export const ListItem = styled.li`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 10px 0;
+  gap: 10px;
+
   width: 100%;
   max-width: 250px;
   padding: 10px;
@@ -23,7 +24,7 @@ export const TaskName = styled.div`
   align-items: center;
   gap: 10px;
   width: 100%;
-  margin-bottom: 10px;
+
   h4 {
     margin: 0;
     font-size: 18px;
@@ -58,4 +59,70 @@ export const TagsList = styled.ul`
       background-color: #fad0d0;
     }
   }
+`;
+
+export const Button = styled.button`
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 5px;
+  background-color: transparent;
+  border: solid 1px #01060c;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #000;
+  font-size: 20px;
+  &:hover {
+    color: #d1868680;
+  }
+  transition: color 0.3s ease;
+
+  &:focus,
+  &:active {
+    color: #d1868680;
+  }
+`;
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  background-color: #f9f9f9;
+  max-width: 400px;
+  margin: 0 auto;
+`;
+export const Input = styled.input`
+  max-width: 300px;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  &:focus {
+    border-color: #d1868680;
+    outline: none;
+  }
+`;
+export const Textarea = styled.textarea`
+  max-width: 300px;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  resize: vertical;
+  &:focus {
+    border-color: #d1868680;
+    outline: none;
+  }
+`;
+export const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
 `;

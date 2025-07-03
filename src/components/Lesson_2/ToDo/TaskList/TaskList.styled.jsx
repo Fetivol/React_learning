@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const List = styled.ul`
   list-style: none;
-  padding: 0;
+  padding: 20px 0 20px 0;
   margin: 20px auto;
   display: flex;
   flex-wrap: wrap;

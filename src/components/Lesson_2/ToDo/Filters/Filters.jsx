@@ -1,5 +1,6 @@
 import React from 'react';
-import { Form, Input, Label, Select } from './Filters.styled';
+import { Form, Input, Label, ResetButton, Select } from './Filters.styled';
+import { TbZoomReset } from 'react-icons/tb';
 
 function Filters({ tags, filter, setFilter }) {
   function handleChange(e) {
@@ -8,6 +9,14 @@ function Filters({ tags, filter, setFilter }) {
       ...prev,
       [name]: value,
     }));
+  }
+
+  function handleReset() {
+    setFilter({
+      textFilter: '',
+      completed: '',
+      tag: '',
+    });
   }
 
   return (
@@ -24,6 +33,7 @@ function Filters({ tags, filter, setFilter }) {
           name="textFilter"
           value={filter.textFilter}
           onChange={handleChange}
+          autoComplete="off"
         />
       </Label>
 
@@ -46,6 +56,9 @@ function Filters({ tags, filter, setFilter }) {
           </option>
         ))}
       </Select>
+      <ResetButton type="button" onClick={handleReset}>
+        <TbZoomReset />
+      </ResetButton>
     </Form>
   );
 }
