@@ -50,7 +50,7 @@ function TaskItem({
     const [editForm, setEditForm] = useState({
       task,
       desc,
-      tags: tags.join(', '),
+      tags: Array.isArray(tags) ? tags.join(', ') : tags || '',
     });
 
     function handleEditChange(e) {
